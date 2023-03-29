@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Alarm Clock',
+      title: 'Lime Alarm Clock',
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
@@ -88,10 +88,21 @@ class _MyHomePageState extends State<MyHomePage> {
                     hour = int.parse(hourController.text);
                     minutes = int.parse(minuteController.text);
 
-                    // creating alarm after converting hour
-                    // and minute into integer
-                    FlutterAlarmClock.createAlarm(hour, minutes);
+                    // checking if the hours and minutes are in range
+                    if (hour < 0 || hour > 23 || minutes < 0 || minutes > 59) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content:
+                              Text('Incorrect numbers for hour or minutes'),
+                        ),
+                      );
+                    } else {
+                      // creating alarm after converting hour
+                      // and minute into integer
+                      FlutterAlarmClock.createAlarm(hour, minutes);
+                    }
                   } catch (e) {
+                    //!bad way to handle exception but it works :)
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text('Invalid input'),

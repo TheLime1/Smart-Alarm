@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.alarm">
    <application
-        android:label="alarm"
+        android:label="Smart Alarm"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
